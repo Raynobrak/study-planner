@@ -1,5 +1,20 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="fr">
+
+<!--
+    Page that a user who's not logged in will land on
+    Rafael Félix
+-->
+
+<?php
+    // TODO: Check if user is logged in; if it's the case, then redirect onto vocabs page
+    if($_SESSION['loggedin'] === true) {
+        header('Location: vocabs.php');
+    }
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +25,9 @@
 
     <title>Home</title>
 </head>
-<body>
+
+<!-- Fullpage -->
+<body class="fullpage">
 
     <!-- Container -->
     <div class="jumbotron vertical-center">
@@ -29,7 +46,7 @@
             </div>
 
             <!-- "About" button -->
-            <button type="button" class="btn btn-outline-secondary btn-lg mb-3">Le projet</button>
+            <button type="button" class="btn btn-outline-secondary mb-3">Le projet</button>
 
             <!-- Footer -->
             <p class="mt-5">© 2020 - Studeum</p>

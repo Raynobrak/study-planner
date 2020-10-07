@@ -3,13 +3,17 @@
     Rafael Félix
 */
 
-body {
+/*
+    Fullpage pages have the overflow cutout
+*/
+.fullpage {
     overflow: hidden;
 }
 
 /* 
     Adapted from:
     https://stackoverflow.com/questions/22196587/how-to-vertically-center-a-container-in-bootstrap 
+    Centers a container vertically
 */
 .vertical-center {
     min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
@@ -17,4 +21,4 @@ body {
   
     display: flex;
     align-items: center;
-  }
+}

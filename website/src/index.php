@@ -1,13 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
+<!--
+    Index redirection page
+    Rafael Félix
+-->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Redirecting</title>
+    <title>Redirection</title>
 </head>
 <body>
-    <p>Redirecting, click <a href="home.php">here</a> if it takes too long.</p>
+    <p>Redirection, cliquez <a href="home.php">ici</a> si cela prend trop de temps.</p>
     <?php header('Location: home.php'); ?>
 </body>
 </html>
