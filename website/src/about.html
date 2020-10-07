@@ -1,22 +1,14 @@
-<?php session_start(); ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
 <!--
-    Page that a user who's not logged in will land on
+    Page that describes the project a little bit
     Rafael Félix
 -->
 
-<?php
-
-    // TODO: SET loggedin SESSION
-
-    // TODO: Check if user is logged in; if it's the case, then redirect onto vocabs page
-    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-        header('Location: vocabs.php');
-    }
-?>
+<!--
+    TODO: Do better elements placement; they're all kinda cramped up in the middle rn it should feel more like an actual full-sized page
+-->
 
 <head>
     <meta charset="UTF-8">
@@ -36,20 +28,14 @@
     <div class="fullcontainer jumbotron vertical-center">
         <div class="container text-center">
 
-            <!-- Title/subtitle -->
-            <h1 class="h1 mb-3 font-weight-normal">Studeum</h1>
-            <h2 class="h5 mb-5 font-weight-normal">Lorem ipsum dolor sit amet</h2>
+            <!-- Title/contents -->
+            <h1 class="h1 mb-5 font-weight-normal">Studeum</h1>
+            <p class="mb-5">
+                Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet
+            </p>
 
-            <!-- Login/register buttons -->
-            <div class="text-center mb-5">
-                <div class="btn-group-vertical" role="group" aria-label="Login Register Buttons">
-                    <button type="button" class="btn btn-primary btn-lg" onclick="location.href = 'login.php';">Se connecter</button>
-                    <button type="button" class="btn btn-primary btn-lg" onclick="location.href = 'register.php';">Créer un compte</button>
-                </div>
-            </div>
-
-            <!-- "About" button -->
-            <button type="button" class="btn btn-outline-secondary mb-3" onclick="location.href = 'about.html';">Le projet</button>
+            <!-- "Return" button -->
+            <button type="button" class="btn btn-outline-secondary mb-3" onclick="location.href = 'home.php';">Retour</button>
 
             <!-- Footer -->
             <p class="mt-5">© 2020 - Studeum</p>
