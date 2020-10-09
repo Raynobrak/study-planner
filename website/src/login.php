@@ -45,9 +45,9 @@
                 <!-- Username/Password -->
                 <div class="input-group-vertical">
                     <label for="inputUsername" class="sr-only">Nom d'utilisateur</label>
-                    <input type="text" id="inputUsername" class="form-control" placeholder="Nom d'utilisateur" oninvalid="this.setCustomValidity('Remplissez ce champ s\'il vous plaît')" required autofocus>
+                    <input type="text" id="inputUsername" name="inputUsername" class="form-control" placeholder="Nom d'utilisateur" oninvalid="this.setCustomValidity('Remplissez ce champ s\'il vous plaît')" required autofocus>
                     <label for="inputPassword" class="sr-only">Mot de passe</label>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" oninvalid="this.setCustomValidity('Remplissez ce champ s\'il vous plaît')" required>
+                    <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Mot de passe" oninvalid="this.setCustomValidity('Remplissez ce champ s\'il vous plaît')" required>
                 </div>
 
                 <!-- Submit -->
