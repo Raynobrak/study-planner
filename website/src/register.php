@@ -51,7 +51,7 @@
                     <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" 
                     oninvalid="this.setCustomValidity('Remplissez ce champ s\'il vous plaît')" required>
                     <label for="inputPasswordConf" class="sr-only">Confirmation de mot de passe</label>
-                    <input type="password" id="inputPasswordConf" class="form-control mb-3" placeholder="Confirmation de mot de passe" 
+                    <input type="password" id="inputPasswordConf" class="form-control" placeholder="Confirmation de mot de passe" 
                     oninvalid="this.setCustomValidity('Remplissez ce champ s\'il vous plaît')" required>
                 </div>
                 

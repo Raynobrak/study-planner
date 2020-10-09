@@ -10,6 +10,7 @@
     overflow: hidden;
 }
 
+/* Remove margin for main full container */
 .fullcontainer {
     margin: 0;
     padding: 0;
@@ -52,18 +53,21 @@
     z-index: 2;
 }
 
+/* All inputs in vergical group div */
 .form-login .input-group-vertical input {
     border-radius: 0;
     margin-bottom: -1px;
 }
 
+/* 1st input in vertical group div */
 .form-login .input-group-vertical input:first-of-type {
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
 }
 
+/* Last input in vertical group div */
 .form-login .input-group-vertical input:last-of-type {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
