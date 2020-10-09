@@ -9,7 +9,6 @@
 -->
 
 <?php
-
     // TODO: SET loggedin SESSION
 
     // Check if user is logged in; if it's the case, then redirect onto vocabs page
@@ -36,31 +35,33 @@
     <div class="jumbotron vertical-center">
         <div class="container text-center">
 
-            <!-- Title/subtitle -->
+            <!-- Title -->
             <h1 class="h1 mb-5 font-weight-normal">Studeum</h1>
 
             <!-- Login form -->
             <form class="form-login" method="POST" action="performLogin.php">
-                <h2 class="h3 mb-3 font-weight-normal">Connectez-vous</h1>
+                <h2 class="h4 mb-3 font-weight-normal">Connectez-vous</h1>
 
                 <!-- Username/Password -->
-                <label for="inputUsername" class="sr-only">Nom d'utilisateur</label>
-                <input type="text" id="inputUsername" class="form-control" placeholder="Nom d'utilisateur" oninvalid="this.setCustomValidity('Remplissez ce champ s\'il vous plaît')" required autofocus>
-                <label for="inputPassword" class="sr-only">Mot de passe</label>
-                <input type="password" id="inputPassword" class="form-control mb-3" placeholder="Mot de passe" oninvalid="this.setCustomValidity('Remplissez ce champ s\'il vous plaît')" required>
+                <div class="input-group-vertical">
+                    <label for="inputUsername" class="sr-only">Nom d'utilisateur</label>
+                    <input type="text" id="inputUsername" class="form-control" placeholder="Nom d'utilisateur" oninvalid="this.setCustomValidity('Remplissez ce champ s\'il vous plaît')" required autofocus>
+                    <label for="inputPassword" class="sr-only">Mot de passe</label>
+                    <input type="password" id="inputPassword" class="form-control mb-3" placeholder="Mot de passe" oninvalid="this.setCustomValidity('Remplissez ce champ s\'il vous plaît')" required>
+                </div>
 
                 <!-- Submit -->
                 <button class="btn btn-lg btn-primary mb-5" type="submit">Connexion</button>
             </form>
 
             <!-- Create an account instead -->
-            <button type="button" class="btn btn-secondary mb-3" onclick="location.href = 'register.php';">Créer un compte</button>
+            <button type="button" class="btn btn-sm btn-secondary mb-3" onclick="location.href = 'register.php';">Je n'ai pas de compte</button>
 
             <!-- Cancel -->
-            <button type="button" class="btn btn-outline-secondary mb-3" onclick="location.href = 'home.php';">Retour</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary mb-3" onclick="location.href = 'home.php';">Retour</button>
 
             <!-- Footer -->
-            <p class="mt-5">© 2020 - Studeum</p>
+            <p class="mt-5"><hr>© 2020 - Studeum</p>
         </div>
     </div>
 

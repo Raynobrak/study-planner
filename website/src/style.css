@@ -31,7 +31,7 @@
 /*
     Adapted from:
     https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css
-    For the login form
+    For the vertical input groups
 */
 .form-login {
     width: 100%;
@@ -39,9 +39,7 @@
     padding: 15px;
     margin: 0 auto;
 }
-.form-login .checkbox {
-    font-weight: 400;
-}
+
 .form-login .form-control {
     position: relative;
     box-sizing: border-box;
@@ -49,16 +47,23 @@
     padding: 10px;
     font-size: 16px;
 }
+
 .form-login .form-control:focus {
     z-index: 2;
 }
-.form-login input[type="text"] {
+
+.form-login .input-group-vertical input {
+    border-radius: 0;
     margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
 }
-.form-login input[type="password"] {
+
+.form-login .input-group-vertical input:first-of-type {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.form-login .input-group-vertical input:last-of-type {
     margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }

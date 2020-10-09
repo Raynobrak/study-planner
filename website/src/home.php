@@ -52,7 +52,7 @@
             <button type="button" class="btn btn-outline-secondary mb-3" onclick="location.href = 'about.html';">Le projet</button>
 
             <!-- Footer -->
-            <p class="mt-5">© 2020 - Studeum</p>
+            <p class="mt-5"><hr>© 2020 - Studeum</p>
         </div>
     </div>
 
