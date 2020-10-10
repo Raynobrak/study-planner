@@ -8,15 +8,6 @@
     Rafael Félix
 -->
 
-<?php
-    // TODO: SET loggedin SESSION
-
-    // Check if user is logged in; if it's the case, then redirect onto vocabs page
-    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-        header('Location: vocabs.php');
-    }
-?>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
