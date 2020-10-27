@@ -33,6 +33,12 @@
             <form class="form-login" method="POST" action="performRegistration.php">
                 <h2 class="h4 mb-3 font-weight-normal">Créez un compte</h1>
 
+                <!-- Error if any -->
+                <?php
+                    if(isset($_SESSION['registrationError']) && $_SESSION['registrationError'] === true)
+                        echo '<div class="alert alert-danger mb-3" role="alert">'.$_SESSION['registrationErrorText'].'</div>';
+                ?>
+
                 <!-- Username/Password/Conf -->
                 <div class="input-group-vertical">
                     <label for="inputUsername" class="sr-only">Nom d'utilisateur</label>

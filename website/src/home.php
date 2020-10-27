@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php 
+    session_start(); 
+    $_SESSION['registrationError'] = false;
+    $_SESSION['registrationSuccess'] = false;
+    $_SESSION['loginError'] = false;
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -7,16 +12,6 @@
     Page that a user who's not logged in will land on
     Rafael Félix
 -->
-
-<?php
-
-    // TODO: SET loggedin SESSION
-
-    // TODO: Check if user is logged in; if it's the case, then redirect onto vocabs page
-    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-        header('Location: vocabs.php');
-    }
-?>
 
 <head>
     <meta charset="UTF-8">
@@ -31,6 +26,10 @@
 
 <!-- Fullpage -->
 <body class="fullpage">
+
+    <?php
+        include('navbar.php');
+    ?>
 
     <!-- Container -->
     <div class="fullcontainer jumbotron vertical-center">
@@ -49,7 +48,7 @@
             </div>
 
             <!-- "About" button -->
-            <button type="button" class="btn btn-outline-secondary mb-3" onclick="location.href = 'about.html';">Le projet</button>
+            <button type="button" class="btn btn-outline-secondary mb-3" onclick="location.href = 'about.php';">Le projet</button>
 
             <!-- Footer -->
             <p class="mt-5"><hr>© 2020 - Studeum</p>

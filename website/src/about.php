@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -24,6 +25,10 @@
 <!-- Fullpage -->
 <body class="fullpage">
 
+    <?php
+        include('navbar.php');
+    ?>
+
     <!-- Container -->
     <div class="fullcontainer jumbotron vertical-center">
         <div class="container text-center">
@@ -35,7 +40,11 @@
             </p>
 
             <!-- "Return" button -->
-            <button type="button" class="btn btn-outline-secondary mb-3" onclick="location.href = 'home.php';">Retour</button>
+            <?php
+                if(!isset($_SESSION['loggedin']) || (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === false)) {
+                    echo "<button type=\"button\" class=\"btn btn-outline-secondary mb-3\" onclick=\"location.href = 'home.php';\">Retour</button>";
+                }
+            ?>
 
             <!-- Footer -->
             <p class="mt-5"><hr>© 2020 - Studeum</p>

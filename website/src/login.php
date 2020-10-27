@@ -33,6 +33,15 @@
             <form class="form-login" method="POST" action="performLogin.php">
                 <h2 class="h4 mb-3 font-weight-normal">Connectez-vous</h1>
 
+                <!-- Success/error message if any -->
+                <?php
+                    if(isset($_SESSION['registrationSuccess']) && $_SESSION['registrationSuccess'] === true)
+                        echo '<div class="alert alert-success mb-3" role="alert">'.$_SESSION['registrationSuccessText'].'</div>';
+                    
+                    if(isset($_SESSION['loginError']) && $_SESSION['loginError'] === true)
+                        echo '<div class="alert alert-danger mb-3" role="alert">'.$_SESSION['loginErrorText'].'</div>';
+                ?>
+
                 <!-- Username/Password -->
                 <div class="input-group-vertical">
                     <label for="inputUsername" class="sr-only">Nom d'utilisateur</label>

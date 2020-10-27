@@ -10,8 +10,22 @@ session_start();
 
 require_once('php-single-line-db-queries/db_functions.php');
 
-function print_error($err) {
-    echo '<div class="alert alert-danger" role="alert">Erreur lors de la création du compte : '.$err.'</div>';
+//
+// Redirects the user to the register page and shows an error
+//
+function redirect_print_error($err) {
+    $_SESSION['registrationError'] = true;
+    $_SESSION['registrationErrorText'] = $err;
+    header('Location: register.php');
+}
+
+//
+// Redirects the user to the login page and shows a message
+//
+function redirect_print_success($msg) {
+    $_SESSION['registrationSuccess'] = true;
+    $_SESSION['registrationSuccessText'] = $msg;
+    header('Location: login.php');
 }
 
 // Making sure ever
@@ -24,21 +38,21 @@ if( !empty($_POST['inputUsername']) &&
     $passwordConf = $_POST['inputPasswordConf'];
 
     if(strlen($username) > 50) {
-        print_error('Merci de choisir un nom d\'utilisateur ne dépassant pas 50 caractères.');
+        redirect_print_error('Merci de choisir un nom d\'utilisateur ne dépassant pas 50 caractères.');
     }
     else {
         if($username != strip_tags($username)) {
-            print_error('Merci de ne pas essayer d\'injecter des caractères interdits dans votre nom d\'utilisateur...');
+            redirect_print_error('Merci de ne pas essayer d\'injecter des caractères interdits dans votre nom d\'utilisateur...');
         }
         else {
             if($password != $passwordConf) {
-                print_error('Vous avez mal répété votre mot de passe.');
+                redirect_print_error('Vous avez mal répété votre mot de passe.');
             }
             else {
 
                 $usernameTaken = count(executeQuery('SELECT 1 FROM user WHERE username = :username', array(array('username', $username, PDO::PARAM_STR)))) > 0;
                 if($usernameTaken) {
-                    print_error('Le nom d\'utilisateur souhaité est déjà utilisé par une autre personne, merci d\'en choisir un autre.');
+                    print_eredirect_print_errorrror('Le nom d\'utilisateur souhaité est déjà utilisé par une autre personne, merci d\'en choisir un autre.');
                 }
                 else {
                     $secure_password_hash = password_hash($password, PASSWORD_DEFAULT);
@@ -46,10 +60,10 @@ if( !empty($_POST['inputUsername']) &&
                     $ok = executeNonQuery('INSERT INTO user(username, password_hash, registration_date) VALUES (:username, :pass, NOW())', array(array('username', $username), array('pass', $secure_password_hash)));
     
                     if(!$ok) {
-                        print_error('Impossible de créer le compte pour une raison inconnue, merci de réessayer plus tard.');
+                        redirect_print_error('Impossible de créer le compte pour une raison inconnue, merci de réessayer plus tard.');
                     }
                     else{
-                        echo 'Compte créé avec succès. Vous pouvez maintenant <a href="login.php">vous connecter</a>.';
+                        redirect_print_success('Compte créé avec succès. Vous pouvez maintenant vous connecter.');
                     }
                 }
             }

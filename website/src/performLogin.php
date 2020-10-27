@@ -10,8 +10,13 @@ session_start();
 
 require_once('php-single-line-db-queries/db_functions.php');
 
-function print_error($err) {
-    echo '<div class="alert alert-danger" role="alert">Erreur lors de la connexion : '.$err.'</div>';
+//
+// Redirects the user to the login page and shows an error
+//
+function redirect_print_error($err) {
+    $_SESSION['loginError'] = true;
+    $_SESSION['loginErrorText'] = $err;
+    header('Location: login.php');
 }
 
 if( !empty($_POST['inputUsername']) &&
@@ -29,14 +34,14 @@ if( !empty($_POST['inputUsername']) &&
             executeNonQuery('UPDATE user SET last_login_date = NOW() WHERE username = :username', array(array('username', $username)));
             $_SESSION['loggedin'] = true;
             $_SESSION['loggedUser'] = $user[0];
-            header('location:home.php');
+            header('location:vocabs.php');
         }
         else {
-            print_error('<strong>Mot de passe</strong> ou nom d\'utilisateur invalide.');
+            redirect_print_error('Mot de passe ou nom d\'utilisateur invalide.');
         }
     } 
     else {
-        print_error('Mot de passe ou <strong>nom d\'utilisateur</strong> invalide.');
+        redirect_print_error('Mot de passe ou nom d\'utilisateur invalide.');
     }
 }
 else {
