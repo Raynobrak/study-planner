@@ -1,3 +1,8 @@
+<!--
+    Very simple static navigation bar in bootstrap
+    Rafael Félix
+-->
+
 <!-- Show navbar if connected -->
 <?php
     if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {

@@ -19,15 +19,59 @@
 </head>
 
 <!-- Fullpage -->
-<body class="fullpage">
+<body>
 
     <?php
         include('navbar.php');
     ?>
 
     <!-- Container -->
-    <div class="container">
-        
+    <div class="fullcontainer">
+        <div class="container offsetContainer">
+
+            <!-- Vocabs Table -->
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Branche</th>
+                        <th scope="col">Nombre de mots</th>
+                        <th scope="col">Date de début</th>
+                        <th scope="col">Planning de révision</th>
+                        <th scope="col">Lien de la ressource</th>
+                        <th scope="col">Suppression</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        for($i = 0; $i < 7; $i++) {
+                            echo    '<tr>
+                                        <th scope="row">'.($i+1).'</th>
+                                        <td>Ayy</td>
+                                        <td>Anglais</td>
+                                        <td>150</td>
+                                        <td>12.12.2021</td>
+                                        <td class="text-center">'.
+                                            // TODO: calendar page with data given trough GET
+                                            '<button type="button" class="btn btn-info btn-sm"
+                                            onclick="location.href = \'calendar.php\';">Afficher</button>
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn btn-outline-info btn-sm"
+                                            onclick="window.open(\'https://www.bing.com\', \'_blank\');">Lien externe</button>
+                                        </td>
+                                        <td class="text-center">'.
+                                            // TODO: eraseVocab.php page with data given trough GET
+                                            '<button type="button" class="btn btn-danger btn-sm"
+                                            onclick="location.href = \'eraseVocab.php\';">Supprimer</button>
+                                        </td>
+                                    </tr>';
+                        }
+                    ?>
+                </tbody>
+            </table>   
+        </div>
     </div>
 
     <!-- JS to work with Bootstrap -->
