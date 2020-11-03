@@ -20,11 +20,21 @@ function getVocabsForUser($username) {
 }
 
 function computeStudySessionsForVocabulary($vocabulary) {
-    $start_date = new DateTime($vocabulary['creation_date'];
+    //$start_date = new DateTime($vocabulary['creation_date']);
+
+    $sessions = array('test1', 'test2');
 }
 
-function computeStudyCalendar($vocabularies) {
+function printStudyCalendarForUser($username) {
+    $vocabs = getVocabsForUser($username);
 
+    $studyCalendar = array('a','b');
+    foreach($vocabs as $v) {
+        $studySessions = computeStudySessionsForVocabulary($v);
+        $studyCalendar = array_merge($studyCalendar, $studySessions);
+    }
+
+    return $studyCalendar;
 }
 
 ?>
