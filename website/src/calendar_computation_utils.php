@@ -19,22 +19,39 @@ function getVocabsForUser($username) {
     return $vocabularies;
 }
 
+/*
 function computeStudySessionsForVocabulary($vocabulary) {
-    //$start_date = new DateTime($vocabulary['creation_date']);
 
-    $sessions = array('test1', 'test2');
-}
-
-function printStudyCalendarForUser($username) {
-    $vocabs = getVocabsForUser($username);
-
-    $studyCalendar = array('a','b');
-    foreach($vocabs as $v) {
-        $studySessions = computeStudySessionsForVocabulary($v);
-        $studyCalendar = array_merge($studyCalendar, $studySessions);
+    $sessions = array();
+    for($i = 0; $i < 5; $i++) {
+      $current_date->add(new DateInterval(sprintf('P%dD', $i)));
+      var_dump($current_date);
+      $sessions[] = array($current_date);
     }
 
-    return $studyCalendar;
+    return $sessions;
+}
+*/
+
+function generateStudyCalendarForUser($username) {
+    $vocabs = getVocabsForUser($username);
+
+    $calendar = array();
+
+    // Pour chaque vocabulaire...
+    foreach($vocabs as $v) {
+
+      $current_date = new DateTime($v['creation_date']);
+
+      for($i = 0; $i < 5; $i++) {
+        $current_date->add(new DateInterval(sprintf('P%dD', $i)));
+        $date = $current_date->format('Y-m-d');
+        $calendar[$date][] = $v;
+      }
+    }
+
+    ksort($calendar);
+    return $calendar;
 }
 
 ?>
