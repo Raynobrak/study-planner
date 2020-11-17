@@ -79,32 +79,32 @@
 			<form id="form_6754" class="appnitro" method="post" action="/forms/view.php">
 				<div class="form_description">
 					<h2>Ajouter un vocabulaire</h2>
-					<p>Remplissez les informations, puis cliquez sur "ajouter"</p>
+					<p>Remplissez les champs puis cliquez sur "ajouter"</p>
 				</div>						
 				<ul>
 					<li id="li_1">
-						<label class="description" for="element_1">Nom du vocabulaire </label>
+						<label class="description" for="vocLabel">Nom du vocabulaire </label>
 						<div>
-							<input id="element_1" name="element_1" class="element text medium" type="text" maxlength="255" value=""> 
+							<input id="vocLabel" name="vocLabel" class="element text medium" type="text" maxlength="255" value=""> 
 						</div> 
 					</li>
 					<li id="li_4">
-						<label class="description" for="element_4">Langue </label>
+						<label class="description" for="langue">Langue </label>
 						<div>
-							<select class="element select medium" id="element_4" name="element_4"> 
+							<select class="element select medium" id="langue" name="langue"> 
 								<option value="" selected="selected"></option>
 								<option value="1">Third option</option>
 							</select>
 						</div> 
 					</li>
 					<li id="li_2">
-						<label class="description" for="element_2">Nombre de mots </label>
+						<label class="description" for="wordCount">Nombre de mots du vocabulaire</label>
 						<div>
-							<input id="element_2" name="element_2" class="element text medium" type="text" maxlength="255" value=""> 
+							<input id="wordCount" name="wordCount" class="element text medium" type="text" maxlength="255" value=""> 
 						</div> 
 					</li>
 					<li id="li_3">
-						<label class="description" for="element_3">Date de première révision </label>
+						<label class="description" for="firstStudyDate">Date de première révision </label>
 						<div>
 							<input type="date" name="firstStudyDate">
 						</div>
