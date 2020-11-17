@@ -28,7 +28,7 @@
     <!-- Container -->
     <div class="fullcontainer">
         <div class="container offsetContainer">
-
+			<h2>Mes vocabulaires</h2>
             <!-- Vocabs Table -->
             <table class="table table-striped table-bordered">
                 <thead>
@@ -70,7 +70,52 @@
                         }
                     ?>
                 </tbody>
-            </table>   
+            </table>
+
+			<!-- 
+				Formulaire pour ajouter un vocabulaire
+			-->
+			
+			<form id="form_6754" class="appnitro" method="post" action="/forms/view.php">
+				<div class="form_description">
+					<h2>Ajouter un vocabulaire</h2>
+					<p>Remplissez les informations, puis cliquez sur "ajouter"</p>
+				</div>						
+				<ul>
+					<li id="li_1">
+						<label class="description" for="element_1">Nom du vocabulaire </label>
+						<div>
+							<input id="element_1" name="element_1" class="element text medium" type="text" maxlength="255" value=""> 
+						</div> 
+					</li>
+					<li id="li_4">
+						<label class="description" for="element_4">Langue </label>
+						<div>
+							<select class="element select medium" id="element_4" name="element_4"> 
+								<option value="" selected="selected"></option>
+								<option value="1">Third option</option>
+							</select>
+						</div> 
+					</li>
+					<li id="li_2">
+						<label class="description" for="element_2">Nombre de mots </label>
+						<div>
+							<input id="element_2" name="element_2" class="element text medium" type="text" maxlength="255" value=""> 
+						</div> 
+					</li>
+					<li id="li_3">
+						<label class="description" for="element_3">Date de première révision </label>
+						<div>
+							<input type="date" name="firstStudyDate">
+						</div>
+					</li>
+					<li class="buttons">
+						<input type="hidden" name="form_id" value="6754">			
+						<input id="saveForm" class="button_text" type="submit" name="submit" value="Ajouter">
+					</li>
+				</ul>
+			</form>
+			
         </div>
     </div>
 
