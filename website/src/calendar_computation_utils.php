@@ -2,6 +2,8 @@
 
 require_once('php-single-line-db-queries/db_functions.php');
 
+date_default_timezone_set('Europe/Zurich');
+
 function getVocabsForUser($username) {
     $vocabularies = executeQuery('SELECT 
                                     v.id, 
