@@ -16,6 +16,10 @@
     padding: 0;
 }
 
+.formcontainer {
+    max-width: 400px;
+}
+
 /* 
     Adapted from:
     https://stackoverflow.com/questions/22196587/how-to-vertically-center-a-container-in-bootstrap 

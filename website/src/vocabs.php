@@ -28,9 +28,9 @@
     <!-- Container -->
     <div class="fullcontainer">
         <div class="container offsetContainer">
-			<h2>Mes vocabulaires</h2>
+			<h2 class="mb-3">Mes vocabulaires</h2>
             <!-- Vocabs Table -->
-            <table class="table table-striped table-bordered">
+            <table class="table table-striped table-bordered mb-5">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -57,8 +57,9 @@
                                             '<button type="button" class="btn btn-info btn-sm"
                                             onclick="location.href = \'calendar.php\';">Afficher</button>
                                         </td>
-                                        <td class="text-center">
-                                            <button type="button" class="btn btn-outline-info btn-sm"
+                                        <td class="text-center">'.
+                                            // TODO: open right website given through GET
+                                            '<button type="button" class="btn btn-outline-info btn-sm"
                                             onclick="window.open(\'https://www.bing.com\', \'_blank\');">Lien externe</button>
                                         </td>
                                         <td class="text-center">'.
@@ -74,48 +75,41 @@
 
 			<!-- 
 				Formulaire pour ajouter un vocabulaire
-			-->
-			
+			-->	
 			<form id="form_6754" class="appnitro" method="post" action="/forms/view.php">
-				<div class="form_description">
+				<div class="form_description mb-4">
 					<h2>Ajouter un vocabulaire</h2>
 					<p>Remplissez les champs puis cliquez sur "ajouter"</p>
 				</div>						
-				<ul>
-					<li id="li_1">
-						<label class="description" for="vocLabel">Nom du vocabulaire </label>
-						<div>
-							<input id="vocLabel" name="vocLabel" class="element text medium" type="text" maxlength="255" value=""> 
-						</div> 
-					</li>
-					<li id="li_4">
-						<label class="description" for="langue">Langue </label>
-						<div>
-							<select class="element select medium" id="langue" name="langue"> 
-								<option value="" selected="selected"></option>
-								<option value="1">Third option</option>
-							</select>
-						</div> 
-					</li>
-					<li id="li_2">
-						<label class="description" for="wordCount">Nombre de mots du vocabulaire</label>
-						<div>
-							<input id="wordCount" name="wordCount" class="element text medium" type="text" maxlength="255" value=""> 
-						</div> 
-					</li>
-					<li id="li_3">
-						<label class="description" for="firstStudyDate">Date de première révision </label>
-						<div>
-							<input type="date" name="firstStudyDate">
-						</div>
-					</li>
-					<li class="buttons">
-						<input type="hidden" name="form_id" value="6754">			
-						<input id="saveForm" class="button_text" type="submit" name="submit" value="Ajouter">
-					</li>
-				</ul>
+				
+                <div class="formcontainer">
+                    <label class="description" for="vocLabel">Nom du vocabulaire </label>
+                    <div>
+                        <input id="vocLabel" name="vocLabel" class="form-control mb-3" type="text" maxlength="255" value=""> 
+                    </div> 
+                
+                    <label class="description" for="langue">Langue </label>
+                    <div>
+                        <select class="form-control mb-3" id="langue" name="langue"> 
+                            <option value="" selected="selected"></option>
+                            <option value="1">Third option</option>
+                        </select>
+                    </div> 
+                
+                    <label class="description" for="wordCount">Nombre de mots du vocabulaire</label>
+                    <div>
+                        <input id="wordCount" name="wordCount" class="form-control mb-3" type="text" maxlength="255" value=""> 
+                    </div> 
+                
+                    <label class="description" for="firstStudyDate">Date de première révision </label>
+                    <div>
+                        <input type="date" class="form-control mb-4" name="firstStudyDate">
+                    </div>
+                
+                    <input type="hidden" name="form_id" value="6754">			
+                    <input id="saveForm" class="button_text btn btn-success mb-5" type="submit" name="submit" value="Ajouter">
+                </div>
 			</form>
-			
         </div>
     </div>
 
