@@ -83,31 +83,31 @@
 				</div>						
 				
                 <div class="formcontainer">
-                    <label class="description" for="vocLabel">Nom du vocabulaire </label>
-                    <div>
-                        <input id="vocLabel" name="vocLabel" class="form-control mb-3" type="text" maxlength="255" value=""> 
-                    </div> 
+                    <!-- Nom -->
+                    <label for="vocLabel">Nom du vocabulaire </label>
+                    <input id="vocLabel" name="vocLabel" class="form-control mb-3" type="text" maxlength="255" value=""> 
                 
-                    <label class="description" for="langue">Langue </label>
-                    <div>
-                        <select class="form-control mb-3" id="langue" name="langue"> 
-                            <option value="" selected="selected"></option>
-                            <option value="1">Third option</option>
-                        </select>
-                    </div> 
+                    <!-- Langue -->
+                    <label for="langue">Langue </label>
+                    <select id="langue" name="langue" class="form-control mb-3"> 
+                        <option value="0" selected="selected">Anglais</option>
+                        <option value="1">Allemand</option>
+                        <option value="2">Italien</option>
+                        <option value="3">Français</option>
+                        <option value="4">Latin</option>
+                        <option value="5">Espagnol</option>
+                    </select>
                 
-                    <label class="description" for="wordCount">Nombre de mots du vocabulaire</label>
-                    <div>
-                        <input id="wordCount" name="wordCount" class="form-control mb-3" type="text" maxlength="255" value=""> 
-                    </div> 
-                
-                    <label class="description" for="firstStudyDate">Date de première révision </label>
-                    <div>
-                        <input type="date" class="form-control mb-4" name="firstStudyDate">
-                    </div>
-                
-                    <input type="hidden" name="form_id" value="6754">			
-                    <input id="saveForm" class="button_text btn btn-success mb-5" type="submit" name="submit" value="Ajouter">
+                    <!-- Nombre de mots -->
+                    <label for="wordCount">Nombre de mots du vocabulaire</label>
+                    <input id="wordCount" name="wordCount" class="form-control mb-3" type="number" maxlength="255" value=""> 
+                    
+                    <!-- Date de prmière révision -->
+                    <label for="firstStudyDate">Date de première révision </label>
+                    <input type="date" class="form-control mb-4" name="firstStudyDate">
+                    
+                    <!-- Submit -->		
+                    <input id="saveForm" class="btn btn-success mb-5" type="submit" name="submit" value="Ajouter">
                 </div>
 			</form>
         </div>
