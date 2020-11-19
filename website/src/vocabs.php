@@ -66,12 +66,12 @@ $vocabsData = getVocabsForUser($user);
                                             <td>'.$vocabsData[3].'</td>
                                             <td>'.$vocabsData[4].'</td>
                                             <td class="text-center">'.
-                                                // TODO: calendar page with data given trough GET
+                                                // TODO: calendar page
                                                 '<button type="button" class="btn btn-info btn-sm"
                                                 onclick="location.href = \'calendar.php\';">Afficher</button>
                                             </td>
                                             <td class="text-center">'.
-                                                // TODO: open right website given through GET
+                                                // TODO: open right website given through the data
                                                 '<button type="button" class="btn btn-outline-info btn-sm"
                                                 onclick="window.open(\'https://www.bing.com\', \'_blank\');">Lien externe</button>
                                             </td>
@@ -95,7 +95,7 @@ $vocabsData = getVocabsForUser($user);
 			<!-- 
 				Formulaire pour ajouter un vocabulaire
 			-->	
-			<form id="form_6754" class="appnitro" method="post" action="/forms/view.php">
+			<form method="post" action="addVocab.php">
 				<div class="form_description mb-4">
 					<h2>Ajouter un vocabulaire</h2>
 					<p>Remplissez les champs puis cliquez sur "ajouter"</p>
@@ -104,7 +104,8 @@ $vocabsData = getVocabsForUser($user);
                 <div class="formcontainer">
                     <!-- Nom -->
                     <label for="vocLabel">Nom du vocabulaire </label>
-                    <input id="vocLabel" name="vocLabel" class="form-control mb-3" type="text" maxlength="255" value=""> 
+                    <input id="vocLabel" name="vocLabel" class="form-control mb-3" type="text" maxlength="255" value="" 
+                    oninvalid="this.setCustomValidity('Remplissez ce champ s\'il vous plaît')" required > 
                 
                     <!-- Langue -->
                     <label for="langue">Langue </label>
@@ -120,11 +121,13 @@ $vocabsData = getVocabsForUser($user);
                 
                     <!-- Nombre de mots -->
                     <label for="wordCount">Nombre de mots du vocabulaire</label>
-                    <input id="wordCount" name="wordCount" class="form-control mb-3" type="number" maxlength="255" value=""> 
+                    <input id="wordCount" name="wordCount" class="form-control mb-3" type="number" maxlength="255" value="" 
+                    oninvalid="this.setCustomValidity('Remplissez ce champ s\'il vous plaît')" required > 
                     
                     <!-- Date de prmière révision -->
                     <label for="firstStudyDate">Date de première révision </label>
-                    <input type="date" class="form-control mb-4" name="firstStudyDate">
+                    <input type="date" class="form-control mb-4" name="firstStudyDate" 
+                    oninvalid="this.setCustomValidity('Remplissez ce champ s\'il vous plaît')" required >
                     
                     <!-- Submit -->		
                     <input id="saveForm" class="btn btn-success mb-5" type="submit" name="submit" value="Ajouter">
