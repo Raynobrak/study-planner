@@ -1,20 +1,7 @@
-<?php 
+<?php
 session_start();
 
-$NB_LANGUAGES = 6;
-
-function getLanguageFromCode($code) {
-    switch($code) {
-        case 0: return 'Anglais'; break;
-        case 1: return 'Allemand'; break;
-        case 2: return 'Italien'; break;
-        case 3: return 'Latin'; break;
-        case 4: return 'Français'; break;
-        case 5: return 'Espagnol'; break;
-        default: return null; break;
-    }
-}
-
+require_once('vocabs_utils.php');
 require_once('php-single-line-db-queries/db_functions.php');
 
 // Load all the data from the DB

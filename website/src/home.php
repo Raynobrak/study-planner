@@ -3,6 +3,11 @@
     $_SESSION['registrationError'] = false;
     $_SESSION['registrationSuccess'] = false;
     $_SESSION['loginError'] = false;
+
+    // Auto login
+    if($_SESSION['loggedin'] == true) {
+        header('Location: vocabs.php');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +42,7 @@
 
             <!-- Title/subtitle -->
             <h1 class="h1 mb-3 font-weight-normal">Studeum</h1>
-            <h2 class="h5 mb-5 font-weight-normal">Lorem ipsum dolor sit amet</h2>
+            <h2 class="h5 mb-5 font-weight-normal">Connectez vous ou créez un compte pour pouvoir commencer à utiliser Studeum</h2>
 
             <!-- Login/register buttons -->
             <div class="text-center mb-5">
