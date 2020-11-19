@@ -1,4 +1,27 @@
-<?php session_start(); ?>
+<?php 
+session_start();
+
+$NB_LANGUAGES = 6;
+
+function getLanguageFromCode($code) {
+    switch($code) {
+        case 0: return 'Anglais'; break;
+        case 1: return 'Allemand'; break;
+        case 2: return 'Italien'; break;
+        case 3: return 'Latin'; break;
+        case 4: return 'Français'; break;
+        case 5: return 'Espagnol'; break;
+        default: return null; break;
+    }
+}
+
+require_once('php-single-line-db-queries/db_functions.php');
+
+// Load all the data from the DB
+$user = $_SESSION['loggedUser'];
+$vocabsData = executeQuery('SELECT * FROM vocabulary WHERE userOwner = :userOwner', array(array('userOwner', $user)));
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -30,48 +53,57 @@
         <div class="container offsetContainer">
 			<h2 class="mb-3">Mes vocabulaires</h2>
             <!-- Vocabs Table -->
-            <table class="table table-striped table-bordered mb-5">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nom</th>
-                        <th scope="col">Branche</th>
-                        <th scope="col">Nombre de mots</th>
-                        <th scope="col">Date de début</th>
-                        <th scope="col">Planning de révision</th>
-                        <th scope="col">Lien de la ressource</th>
-                        <th scope="col">Suppression</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                        for($i = 0; $i < 7; $i++) {
-                            echo    '<tr>
-                                        <th scope="row">'.($i+1).'</th>
-                                        <td>Ayy</td>
-                                        <td>Anglais</td>
-                                        <td>150</td>
-                                        <td>12.12.2021</td>
-                                        <td class="text-center">'.
-                                            // TODO: calendar page with data given trough GET
-                                            '<button type="button" class="btn btn-info btn-sm"
-                                            onclick="location.href = \'calendar.php\';">Afficher</button>
-                                        </td>
-                                        <td class="text-center">'.
-                                            // TODO: open right website given through GET
-                                            '<button type="button" class="btn btn-outline-info btn-sm"
-                                            onclick="window.open(\'https://www.bing.com\', \'_blank\');">Lien externe</button>
-                                        </td>
-                                        <td class="text-center">'.
-                                            // TODO: eraseVocab.php page with data given trough GET
-                                            '<button type="button" class="btn btn-danger btn-sm"
-                                            onclick="location.href = \'eraseVocab.php\';">Supprimer</button>
-                                        </td>
-                                    </tr>';
-                        }
-                    ?>
-                </tbody>
-            </table>
+            <?php 
+            if(count($vocabsData) > 0) { 
+            ?>
+                <table class="table table-striped table-bordered mb-5">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Langue</th>
+                            <th scope="col">Nombre de mots</th>
+                            <th scope="col">Date de création</th> <!-- TODO: Date de début à la place -->
+                            <th scope="col">Planning de révision</th>
+                            <th scope="col">Lien de la ressource</th>
+                            <th scope="col">Suppression</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            for($i = 0; $i < count($vocabsData); $i++) {
+                                echo    '<tr>
+                                            <th scope="row">'.($i+1).'</th>
+                                            <td>'.$vocabsData[3].'</td>
+                                            <td>'.getLanguageFromCode($vocabsData[3]).'</td>
+                                            <td>'.$vocabsData[4].'</td>
+                                            <td>'.$vocabsData[5].'</td>
+                                            <td class="text-center">'.
+                                                // TODO: calendar page with data given trough GET
+                                                '<button type="button" class="btn btn-info btn-sm"
+                                                onclick="location.href = \'calendar.php\';">Afficher</button>
+                                            </td>
+                                            <td class="text-center">'.
+                                                // TODO: open right website given through GET
+                                                '<button type="button" class="btn btn-outline-info btn-sm"
+                                                onclick="window.open(\'https://www.bing.com\', \'_blank\');">Lien externe</button>
+                                            </td>
+                                            <td class="text-center">'.
+                                                // TODO: eraseVocab.php page with data given trough GET
+                                                '<button type="button" class="btn btn-danger btn-sm"
+                                                onclick="location.href = \'eraseVocab.php\';">Supprimer</button>
+                                            </td>
+                                        </tr>';
+                            }
+                        ?>
+                    </tbody>
+                </table>
+                <?php
+                }
+                else {
+                    echo '<div class="alert alert-primary mb-5" role="alert">Vous n\'avez aucun vocabulaire</div>';
+                }
+                ?>
 
 			<!-- 
 				Formulaire pour ajouter un vocabulaire
@@ -90,12 +122,13 @@
                     <!-- Langue -->
                     <label for="langue">Langue </label>
                     <select id="langue" name="langue" class="form-control mb-3"> 
-                        <option value="0" selected="selected">Anglais</option>
-                        <option value="1">Allemand</option>
-                        <option value="2">Italien</option>
-                        <option value="3">Français</option>
-                        <option value="4">Latin</option>
-                        <option value="5">Espagnol</option>
+                        <?php
+                        for($i = 0; $i < $NB_LANGUAGES; $i++) {
+                            if(getLanguageFromCode($i) != null) {
+                                echo '<option value="'. $i .'" '. (($i == 0) ? 'selected' : '') .'>'. getLanguageFromCode($i) .'</option>';
+                            }
+                        }
+                        ?>
                     </select>
                 
                     <!-- Nombre de mots -->
