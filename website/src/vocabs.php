@@ -1,12 +1,12 @@
 <?php
 session_start();
 
-require_once('vocabs_utils.php');
+require_once('calendar_computation_utils.php');
 require_once('php-single-line-db-queries/db_functions.php');
 
 // Load all the data from the DB
 $user = $_SESSION['loggedUser'];
-$vocabsData = executeQuery('SELECT * FROM vocabulary WHERE userOwner = :userOwner', array(array('userOwner', $user)));
+$vocabsData = getVocabsForUser($user);
 ?>
 
 <!DOCTYPE html>
@@ -61,10 +61,10 @@ $vocabsData = executeQuery('SELECT * FROM vocabulary WHERE userOwner = :userOwne
                             for($i = 0; $i < count($vocabsData); $i++) {
                                 echo    '<tr>
                                             <th scope="row">'.($i+1).'</th>
+                                            <td>'.$vocabsData[1].'</td>
+                                            <td>'.getLanguageFromCode($vocabsData[2]).'</td>
                                             <td>'.$vocabsData[3].'</td>
-                                            <td>'.getLanguageFromCode($vocabsData[3]).'</td>
                                             <td>'.$vocabsData[4].'</td>
-                                            <td>'.$vocabsData[5].'</td>
                                             <td class="text-center">'.
                                                 // TODO: calendar page with data given trough GET
                                                 '<button type="button" class="btn btn-info btn-sm"
