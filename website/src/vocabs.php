@@ -7,6 +7,9 @@ require_once('php-single-line-db-queries/db_functions.php');
 // Load all the data from the DB
 $user = $_SESSION['loggedUser']['username'];
 $vocabsData = getVocabsForUser($user);
+
+// Load all languages
+$languages = executeQuery('SELECT * FROM language');
 ?>
 
 <!DOCTYPE html>
@@ -100,13 +103,11 @@ $vocabsData = getVocabsForUser($user);
                     oninvalid="this.setCustomValidity('Remplissez ce champ s\'il vous plaît')" required > 
                 
                     <!-- Langue -->
-                    <label for="langue">Langue </label>
-                    <select id="langue" name="langue" class="form-control mb-3"> 
+                    <label for="language">Langue </label>
+                    <select id="language" name="language" class="form-control mb-3"> 
                         <?php
-                        for($i = 0; $i < $NB_LANGUAGES; $i++) {
-                            if(getLanguageFromCode($i) != null) {
-                                echo '<option value="'. $i .'" '. (($i == 0) ? 'selected' : '') .'>'. getLanguageFromCode($i) .'</option>';
-                            }
+                        for($i = 0; $i < count($languages); $i++) {
+                            echo '<option value="'. $languages[$i]['id'] .'" '. (($i == 0) ? 'selected' : '') .'>'. $languages[$i]['label'] .'</option>';
                         }
                         ?>
                     </select>
