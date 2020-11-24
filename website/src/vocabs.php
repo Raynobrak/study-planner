@@ -6,7 +6,7 @@ require_once('php-single-line-db-queries/db_functions.php');
 
 // Load all the data from the DB
 $user = $_SESSION['loggedUser']['username'];
-$vocabsData = getVocabsForUser($user);
+$vocabsData = getVocabsForUser($user, null);
 
 // Load all languages
 $languages = executeQuery('SELECT * FROM language');

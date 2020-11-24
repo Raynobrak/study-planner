@@ -5,7 +5,6 @@ require_once('php-single-line-db-queries/db_functions.php');
 date_default_timezone_set('Europe/Zurich');
 
 function getVocabsForUser($username, $vocabId) {
-    var_dump($vocabId);
     $vocabularies = executeQuery('SELECT 
                                     v.id, 
                                     v.label, 
