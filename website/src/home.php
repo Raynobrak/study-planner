@@ -5,7 +5,7 @@
     $_SESSION['loginError'] = false;
 
     // Auto login
-    if($_SESSION['loggedin'] == true) {
+    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
         header('Location: vocabs.php');
     }
 ?>
