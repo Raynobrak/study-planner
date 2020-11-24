@@ -4,7 +4,8 @@ require_once('php-single-line-db-queries/db_functions.php');
 
 date_default_timezone_set('Europe/Zurich');
 
-function getVocabsForUser($username) {
+function getVocabsForUser($username, $vocabId) {
+    var_dump($vocabId);
     $vocabularies = executeQuery('SELECT 
                                     v.id, 
                                     v.label, 
@@ -17,7 +18,14 @@ function getVocabsForUser($username) {
                                   LEFT JOIN language l
                                     ON l.id = v.language
                                   WHERE 
-                                    u.username = :username', array(array('username', $username)));
+                                    u.username = :username
+                                    AND
+                                    (
+                                      :id IS NULL
+                                      OR
+                                      v.id = :id
+                                    )'
+                                    , array(array('username', $username), array('id', $vocabId)));
     return $vocabularies;
 }
 
@@ -35,8 +43,8 @@ function computeStudySessionsForVocabulary($vocabulary) {
 }
 */
 
-function generateStudyCalendarForUser($username) {
-    $vocabs = getVocabsForUser($username);
+function generateStudyCalendarForUser($username, $vocabId) {
+    $vocabs = getVocabsForUser($username, $vocabId);
 
     $calendar = array();
 
@@ -54,35 +62,6 @@ function generateStudyCalendarForUser($username) {
 
     ksort($calendar);
     return $calendar;
-}
-
-$NB_LANGUAGES = 6;
-
-// Returns a string (the language) if the code is valid, null otherwise
-function getLanguageFromCode($code) {
-    switch($code) {
-        case 0: return 'Anglais'; break;
-        case 1: return 'Allemand'; break;
-        case 2: return 'Italien'; break;
-        case 3: return 'Latin'; break;
-        case 4: return 'Français'; break;
-        case 5: return 'Espagnol'; break;
-        default: return null; break;
-    }
-}
-
-// Returns an int (the code) if the language is valid, null otherwise
-function getCodeFromLanguage($lang) {
-    strtolower($lang);
-    switch($lang) {
-        case 'anglais':     return 0; break;
-        case 'allemand':    return 1; break;
-        case 'italien':     return 2; break;
-        case 'latin':       return 3; break;
-        case 'français':    return 4; break;
-        case 'espagnol':    return 5; break;
-        default: return null; break;
-    }
 }
 
 ?>

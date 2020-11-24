@@ -25,7 +25,13 @@
 			<?php
 				require_once('calendar_computation_utils.php');
 
-				$calendar = generateStudyCalendarForUser($_SESSION['loggedUser']['username']);
+				$vocabId = null;
+
+				if(!empty($_GET['vocabId'])){
+					$vocabId = $_GET['vocabId'];
+				}
+
+				$calendar = generateStudyCalendarForUser($_SESSION['loggedUser']['username'], $vocabId);
 
 				foreach($calendar as $date => $vocs) {
 					echo '<h2>'.$date.'</h2>';
