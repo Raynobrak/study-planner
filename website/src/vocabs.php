@@ -5,7 +5,7 @@ require_once('calendar_computation_utils.php');
 require_once('php-single-line-db-queries/db_functions.php');
 
 // Load all the data from the DB
-$user = $_SESSION['loggedUser'];
+$user = $_SESSION['loggedUser']['username'];
 $vocabsData = getVocabsForUser($user);
 ?>
 
@@ -50,9 +50,8 @@ $vocabsData = getVocabsForUser($user);
                             <th scope="col">Nom</th>
                             <th scope="col">Langue</th>
                             <th scope="col">Nombre de mots</th>
-                            <th scope="col">Date de création</th> <!-- TODO: Date de début à la place -->
+                            <th scope="col">Date de première révision</th>
                             <th scope="col">Planning de révision</th>
-                            <th scope="col">Lien de la ressource</th>
                             <th scope="col">Suppression</th>
                         </tr>
                     </thead>
@@ -61,24 +60,17 @@ $vocabsData = getVocabsForUser($user);
                             for($i = 0; $i < count($vocabsData); $i++) {
                                 echo    '<tr>
                                             <th scope="row">'.($i+1).'</th>
-                                            <td>'.$vocabsData[1].'</td>
-                                            <td>'.getLanguageFromCode($vocabsData[2]).'</td>
-                                            <td>'.$vocabsData[3].'</td>
-                                            <td>'.$vocabsData[4].'</td>
+                                            <td>'.$vocabsData[$i][1].'</td>
+                                            <td>'.$vocabsData[$i][2].'</td>
+                                            <td>'.$vocabsData[$i][3].'</td>
+                                            <td>'.$vocabsData[$i][4].'</td>
                                             <td class="text-center">'.
-                                                // TODO: calendar page
                                                 '<button type="button" class="btn btn-info btn-sm"
-                                                onclick="location.href = \'calendar.php\';">Afficher</button>
+                                                onclick="location.href = \'calendar.php?vocabId='.$vocabsData[$i][0].'\';">Afficher</button>
                                             </td>
                                             <td class="text-center">'.
-                                                // TODO: open right website given through the data
-                                                '<button type="button" class="btn btn-outline-info btn-sm"
-                                                onclick="window.open(\'https://www.bing.com\', \'_blank\');">Lien externe</button>
-                                            </td>
-                                            <td class="text-center">'.
-                                                // TODO: eraseVocab.php page with data given trough GET
                                                 '<button type="button" class="btn btn-danger btn-sm"
-                                                onclick="location.href = \'eraseVocab.php\';">Supprimer</button>
+                                                onclick="location.href = \'eraseVocab.php?vocabId='.$vocabsData[$i][0].'\';">Supprimer</button>
                                             </td>
                                         </tr>';
                             }
