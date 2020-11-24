@@ -5,7 +5,7 @@ require_once('calendar_computation_utils.php');
 require_once('php-single-line-db-queries/db_functions.php');
 
 // Load all the data from the DB
-$user = $_SESSION['loggedUser'];
+$user = $_SESSION['loggedUser']['username'];
 $vocabsData = getVocabsForUser($user);
 ?>
 
