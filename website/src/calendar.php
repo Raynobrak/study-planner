@@ -57,6 +57,8 @@
 					echo '</p>';
 				}
 			?>
+
+			<hr class="mt-5"><p style="text-align: center;">© 2020 - Studeum</p>
 		</div>
 	</div>
     <!-- JS to work with Bootstrap -->

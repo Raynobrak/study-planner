@@ -126,6 +126,7 @@ $languages = executeQuery('SELECT * FROM language');
                     <input id="saveForm" class="btn btn-success mb-5" type="submit" name="submit" value="Ajouter">
                 </div>
 			</form>
+            <hr class="mt-5"><p style="text-align: center;">© 2020 - Studeum</p>
         </div>
     </div>
 

@@ -7,10 +7,6 @@
     Rafael Félix
 -->
 
-<!--
-    TODO: Do better elements placement; they're all kinda cramped up in the middle rn it should feel more like an actual full-sized page
--->
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,13 +26,28 @@
     ?>
 
     <!-- Container -->
-    <div class="fullcontainer jumbotron vertical-center">
-        <div class="container text-center">
+    <div class="fullcontainer">
+        <div class="offsetContainer" style="margin-left: 25%; margin-right: 25%; text-align: justify;">
 
             <!-- Title/contents -->
-            <h1 class="h1 mb-5 font-weight-normal">Studeum</h1>
+            <h1 class="h1 mb-5 font-weight-normal" style="text-align: center;">Studeum</h1>
+            <p>
+                Studeum est un site web qui a été développé par Lucas Charbonnier, Thomas Germano et Rafael Félix
+                dans le cadre du travail de maturité (TIP) de l'École Technique des Métiers de Lausanne.
+                
+            </p>
+            <p>
+                Le projet consiste en ce site internet, qui sert à générer des horaires de répétition de vos vocabulaires,
+                afin, d'une partie, de réussir une éventuelle évaluation, mais également afin que vous reteniez réellement 
+                ces mots sur le long terme. Pour cela, une fonction qui décrit la rétention mémorielle moyenne d'une personne 
+                est utilisée.
+            </p>
             <p class="mb-5">
-                Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet
+                Le fonctionnement précis de cette fonction et la synthèse de nos recherches à ce propos sont décris dans un 
+                document qui faisait également partie de ce travail.<br>
+                Nous avons aussi rédigé un document analysant les difficultés d'apprentissage d'un vocabulaire Anglais pour
+                une personne francophone.
+                <!-- TODO: liens de telechargement de docs (?) -->
             </p>
 
             <!-- "Return" button -->
@@ -47,7 +58,7 @@
             ?>
 
             <!-- Footer -->
-            <p class="mt-5"><hr>© 2020 - Studeum</p>
+            <hr class="mt-5"><p style="text-align: center;">© 2020 - Studeum</p>
         </div>
     </div>
 
