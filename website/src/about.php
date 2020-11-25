@@ -31,7 +31,7 @@
         <div class="offsetContainer" style="margin-left: 25%; margin-right: 25%; text-align: justify;">
 
             <!-- Title/contents -->
-            <h1 class="h1 mb-5 font-weight-normal" style="text-align: center;">Studeum</h1>
+            <h1 class="h1 mb-5 font-weight-normal" style="text-align: center;">À Propos</h1>
             <p>
                 Studeum est un site web qui a été développé par Lucas Charbonnier, Thomas Germano et Rafael Félix
                 dans le cadre du travail de maturité (TIP) de l'École Technique des Métiers de Lausanne.

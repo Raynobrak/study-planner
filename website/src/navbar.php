@@ -8,7 +8,7 @@
     if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Studeum</a>
+        <a class="navbar-brand" href="vocabs.php"><img src="logo.png" alt="Studeum logo" width="120"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
