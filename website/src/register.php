@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php 
+session_start(); 
+$_SESSION['loginError'] = false;
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
