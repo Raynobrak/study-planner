@@ -2,7 +2,13 @@
     session_start();
 ?>
 
-<!---->
+<!DOCTYPE html>
+<html lang="fr">
+
+<!--
+	Page that lets you view your study planning
+-->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +17,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> 
     <link rel="stylesheet" href="style.css">
 
-    <title>Mes Vocabulaires - Studeum</title>
+    <title>Mon Calendrier - Studeum</title>
 </head>
 
 <!-- Fullpage -->
@@ -22,6 +28,8 @@
 
 	<div class="fullcontainer">
         <div class="container offsetContainer">
+			<h2 class="mb-3">Mon calendrier</h2>
+
 			<?php
 				require_once('calendar_computation_utils.php');
 
@@ -33,13 +41,20 @@
 
 				$calendar = generateStudyCalendarForUser($_SESSION['loggedUser']['username'], $vocabId);
 
+				if(empty($calendar)) {
+					echo '<div class="alert alert-primary mb-5" role="alert">Vous n\'avez aucun vocabulaire</div>';
+				}
+
 				foreach($calendar as $date => $vocs) {
-					echo '<h2>'.$date.'</h2>';
-					echo '<ul>';
+					echo '<span><strong>'.$date.'</strong></span>';
+					echo '<p>';
+
+					$end = end($vocs);
 					foreach($vocs as $v) {
-						echo '<li>'.$v['label'].'</li>';
+						echo $v['label'];
+						if($end != $v) echo ', ';
 					}
-					echo '</ul>';
+					echo '</p>';
 				}
 			?>
 		</div>
