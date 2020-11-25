@@ -57,7 +57,7 @@ if( !empty($_POST['inputUsername']) &&
                 else {
                     $secure_password_hash = password_hash($password, PASSWORD_DEFAULT);
                 
-                    $ok = executeNonQuery('INSERT INTO user(username, password_hash, registration_date) VALUES (:username, :pass, NOW())', array(array('username', $username), array('pass', $secure_password_hash)));
+                    $ok = executeNonQuery('INSERT INTO user(username, password_hash, registration_date) VALUES (:username, :pass, NOW())', array(array('username', htmlspecialchars($username)), array('pass', htmlspecialchars($secure_password_hash))));
     
                     if(!$ok) {
                         redirect_print_error('Impossible de créer le compte pour une raison inconnue, merci de réessayer plus tard.');

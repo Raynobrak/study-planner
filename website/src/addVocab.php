@@ -26,10 +26,10 @@ isset($_POST['firstStudyDate'])) {
         :cd)'
     , array(
         array('user', $user), 
-        array('lng', $_POST['language']),
-        array('lbl', $_POST['vocLabel']),
-        array('wc', $_POST['wordCount']),
-        array('cd', $_POST['firstStudyDate'])));
+        array('lng', htmlspecialchars($_POST['language'])),
+        array('lbl', htmlspecialchars($_POST['vocLabel'])),
+        array('wc', htmlspecialchars($_POST['wordCount'])),
+        array('cd', htmlspecialchars($_POST['firstStudyDate']))));
 }
 
 header('Location: vocabs.php');
