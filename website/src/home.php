@@ -38,7 +38,7 @@
     ?>
 
     <!-- Container -->
-    <div class="fullcontainer jumbotron vertical-center">
+    <div class="fullcontainer vertical-center">
         <div class="container text-center">
 
             <!-- Title/subtitle -->

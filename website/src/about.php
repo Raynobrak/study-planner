@@ -54,7 +54,7 @@
             <!-- "Return" button -->
             <?php
                 if(!isset($_SESSION['loggedin']) || (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === false)) {
-                    echo "<button type=\"button\" class=\"btn btn-outline-secondary mb-3\" onclick=\"location.href = 'home.php';\">Retour</button>";
+                    echo "<div class=\"text-center\"><button type=\"button\" class=\"btn btn-outline-secondary mb-3\" onclick=\"location.href = 'home.php';\">Retour</button></div>";
                 }
             ?>
 
