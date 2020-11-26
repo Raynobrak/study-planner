@@ -43,12 +43,12 @@ $languages = executeQuery('SELECT * FROM language');
     <div class="fullcontainer">
         <div class="container offsetContainer">
 
-			<h2 class="mb-3">Mes vocabulaires</h2>
+			<h2>Mes vocabulaires</h2><p class="mb-3">Connecté en tant que <?php echo $user ?> (<a href="performDeconnection.php">se déconnecter</a>)</p>
             <!-- Vocabs Table -->
             <?php 
             if(count($vocabsData) > 0) { 
             ?>
-                <table class="table table-striped table-bordered mb-4">
+                <table class="table table-striped table-bordered mb-5">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -85,11 +85,10 @@ $languages = executeQuery('SELECT * FROM language');
                 <?php
                 }
                 else {
-                    echo '<div class="alert alert-primary mb-4" role="alert">Vous n\'avez aucun vocabulaire</div>';
+                    echo '<div class="alert alert-primary mb-5" role="alert">Vous n\'avez aucun vocabulaire</div>';
                 }
                 ?>
-                <p class="mb-5">Connecté en tant que <?php echo $user ?> (<a href="performDeconnection.php">se déconnecter</a>)</p>
-
+                
 			<!-- 
 				Formulaire pour ajouter un vocabulaire
 			-->	
