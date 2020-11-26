@@ -20,7 +20,7 @@
 </head>
 
 <!-- Fullpage -->
-<body class="fullpage">
+<body>
 
     <?php
         include('navbar.php');
@@ -28,7 +28,7 @@
 
     <!-- Container -->
     <div class="fullcontainer">
-        <div class="offsetContainer" style="margin-left: 25%; margin-right: 25%; text-align: justify;">
+        <div class="<?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) { echo 'offsetContainer'; } else { echo 'mt-5'; } ?>" style="margin-left: 25%; margin-right: 25%; text-align: justify;">
 
             <!-- Title/contents -->
             <h1 class="h1 mb-5 font-weight-normal" style="text-align: center;">À Propos</h1>
@@ -48,8 +48,12 @@
                 document qui faisait également partie de ce travail.<br>
                 Nous avons aussi rédigé un document analysant les difficultés d'apprentissage d'un vocabulaire Anglais pour
                 une personne francophone.
-                <!-- TODO: liens de telechargement de docs (?) -->
             </p>
+            <h4 class="h4 mb-3">Télécharger les documents rédigés pour ce projet</h4>
+            <ul style="text-align: left;">
+                <li><a href="./docs/sythese_recherches_retention_memorielle.pdf" download>Sythèse de nos recherche sur la rétention mémorielle</a></li>
+                <li><a href="./docs/analyse_difficulte_vocabulaire.pdf" download>Analyse de la difficulté d'apprentissage du vocabulaire anglais pour une personne francophone</a></li>
+            </ul>
 
             <!-- "Return" button -->
             <?php
