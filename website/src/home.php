@@ -33,16 +33,12 @@
 <!-- Fullpage -->
 <body class="fullpage">
 
-    <?php
-        include('navbar.php');
-    ?>
-
     <!-- Container -->
     <div class="fullcontainer vertical-center">
         <div class="container text-center">
 
             <!-- Title/subtitle -->
-            <h1 class="h1 mb-3 font-weight-normal">Studeum</h1>
+            <img class="mb-3" src="logo.png" alt="Studeum logo" width="150">
             <h2 class="h5 mb-5 font-weight-normal">Connectez vous ou créez un compte pour pouvoir commencer à utiliser Studeum</h2>
 
             <!-- Login/register buttons -->

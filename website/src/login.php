@@ -31,7 +31,7 @@ $_SESSION['registrationError'] = false;
         <div class="container text-center">
 
             <!-- Title -->
-            <h1 class="h1 mb-5 font-weight-normal">Studeum</h1>
+            <img class="mb-5" src="logo.png" alt="Studeum logo" width="150">
 
             <!-- Login form -->
             <form class="form-login" method="POST" action="performLogin.php">
