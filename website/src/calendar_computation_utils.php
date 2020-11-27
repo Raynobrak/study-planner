@@ -52,7 +52,7 @@ function generateStudyCalendarForUser($username, $vocabId) {
 
       $current_date = new DateTime($v['creation_date']);
 
-      for($i = 0; $i < 5; $i++) {
+      for($i = 0; $i < 20; $i++) {
         $current_date->add(new DateInterval(sprintf('P%dD', $i)));
         $date = $current_date->format('Y-m-d');
         $calendar[$date][] = $v;
