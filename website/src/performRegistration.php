@@ -52,7 +52,7 @@ if( !empty($_POST['inputUsername']) &&
 
                 $usernameTaken = count(executeQuery('SELECT 1 FROM user WHERE username = :username', array(array('username', $username, PDO::PARAM_STR)))) > 0;
                 if($usernameTaken) {
-                    print_eredirect_print_errorrror('Le nom d\'utilisateur souhaité est déjà utilisé par une autre personne, merci d\'en choisir un autre.');
+                    redirect_print_error('Le nom d\'utilisateur souhaité est déjà utilisé par une autre personne, merci d\'en choisir un autre.');
                 }
                 else {
                     $secure_password_hash = password_hash($password, PASSWORD_DEFAULT);
