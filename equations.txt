@@ -1,0 +1,11 @@
+pour générer les images d'équations :
+https://latex.codecogs.com/eqneditor/editor.php
+
+Code LaTeX :
+
+Rétention : R = \frac{1}{\frac{\log_{10}{(\Delta t + 1)}}{s}+1}
+Force de rétention en fonction de la rétention : R = \frac{s}{\log_{10}{(\Delta t + 1)}+s} \Rightarrow s = \frac{\log_{10}{(\Delta t + 1)}\cdot R}{1-R}
+Fit : s = \frac{\log_{10}{(2 + 1)}\cdot 0.239}{1-0.239} = 0.149845 \approx 0.15
+Dt en fonction de la rétention : \Delta t = 10^{\big(\frac{n\cdot\alpha(1-R_t)}{{R_t}^2}\big)}-1
+
+Force de rétention en fonction du nombre de révisions et du seuil Rt: s = \frac{n \cdot \alpha}{R_t}
