@@ -8,7 +8,9 @@ isset($_SESSION['loggedUser']) &&
 isset($_POST['vocLabel']) &&
 isset($_POST['language']) &&
 isset($_POST['wordCount']) &&
-isset($_POST['firstStudyDate'])) {
+isset($_POST['firstStudyDate']) &&
+isset($_POST['alpha']) &&
+isset($_POST['retentionThreshold']) ) {
 
     $user = $_SESSION['loggedUser']['id'];
 
@@ -17,19 +19,25 @@ isset($_POST['firstStudyDate'])) {
         language, 
         label,
         words_count, 
-        creation_date
+        creation_date,
+        param_alpha,
+        param_retention_threshold
     ) VALUES (
         :user, 
         :lng, 
         :lbl, 
         :wc, 
-        :cd)'
+        :cd,
+        :alpha,
+        :rt)'
     , array(
         array('user', $user), 
         array('lng', htmlspecialchars($_POST['language'])),
         array('lbl', htmlspecialchars($_POST['vocLabel'])),
         array('wc', htmlspecialchars($_POST['wordCount'])),
-        array('cd', htmlspecialchars($_POST['firstStudyDate']))));
+        array('cd', htmlspecialchars($_POST['firstStudyDate'])),
+        array('alpha', htmlspecialchars($_POST['alpha'])),
+        array('rt', htmlspecialchars($_POST['retentionThreshold']))));
 }
 
 header('Location: vocabs.php');

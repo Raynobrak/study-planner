@@ -119,10 +119,23 @@ $languages = executeQuery('SELECT * FROM language');
                     <input id="wordCount" name="wordCount" class="form-control mb-3" type="number" maxlength="255" value="" 
                     oninvalid="this.setCustomValidity('Remplissez ce champ s\'il vous plaît')" required > 
                     
-                    <!-- Date de prmière révision -->
+                    <!-- Date de première révision -->
                     <label for="firstStudyDate">Date de première révision </label>
-                    <input type="date" class="form-control mb-4" name="firstStudyDate" 
+                    <input id="firstStudyDate" type="date" class="form-control mb-4" name="firstStudyDate" 
                     oninvalid="this.setCustomValidity('Remplissez ce champ s\'il vous plaît')" required >
+
+                    <h3>Paramètres du planning</h2>
+                    <p>(Voir le document sur notre modèle mathématique)</p>
+
+                    <!-- Alpha parameter for the mathematical model -->
+                    <label for="alpha">Renforcement mémoriel (paramètre α)</label>
+                    <input id="alpha" name="alpha" class="form-control mb-3" type="text" maxlength="255" value="0.9" 
+                    oninvalid="this.setCustomValidity('Remplissez ce champ s\'il vous plaît')" required > 
+
+                    <!-- Retention threshold -->
+                    <label for="retentionThreshold">Seuil de rétention</label>
+                    <input id="retentionThreshold" name="retentionThreshold" class="form-control mb-3" type="text" maxlength="255" value="0.85" 
+                    oninvalid="this.setCustomValidity('Remplissez ce champ s\'il vous plaît')" required > 
                     
                     <!-- Submit -->		
                     <input id="saveForm" class="btn btn-success mb-5" type="submit" name="submit" value="Ajouter">
@@ -136,5 +149,15 @@ $languages = executeQuery('SELECT * FROM language');
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    
+    <!-- JS to fill the datetime input with today's date by default -->
+    <script>
+        var today = new Date();
+        var dd = ("0" + (today.getDate())).slice(-2);
+        var mm = ("0" + (today.getMonth() +　1)).slice(-2);
+        var yyyy = today.getFullYear();
+        today = yyyy + '-' + mm + '-' + dd;
+        $("#firstStudyDate").attr("value", today);
+    </script>
 </body>
 </html>
