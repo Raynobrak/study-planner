@@ -29,7 +29,8 @@
 
 	<div class="fullcontainer">
         <div class="container offsetContainer">
-			<h2 class="mb-3">Mon calendrier</h2>
+			<h2 class="mb-3">Mon planning de révision</h2>
+			<h4 class="mb-3">Révisions planifiées :</h4>
 
 			<?php
 				require_once('calendar_computation_utils.php');
@@ -48,14 +49,14 @@
 
 				foreach($calendar as $date => $vocs) {
 					echo '<span><strong>'.$date.'</strong></span>';
-					echo '<p>';
+					echo '<ul>';
 
 					$end = end($vocs);
 					foreach($vocs as $v) {
-						echo $v['label'];
-						if($end != $v) echo ', ';
+						echo '<li>'.$v['label'].'</li>';
+						// if($end != $v) echo '<br>';
 					}
-					echo '</p>';
+					echo '</ul>';
 				}
 			?>
 
