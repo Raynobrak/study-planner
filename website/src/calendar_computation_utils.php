@@ -10,7 +10,9 @@ function getVocabsForUser($username, $vocabId) {
                                     v.label, 
                                     l.label as language, 
                                     v.words_count, 
-                                    v.creation_date 
+                                    v.creation_date,
+                                    v.param_retention_threshold,
+                                    v.param_alpha
                                   FROM vocabulary v 
                                   LEFT JOIN user u  
                                     ON v.owner = u.id
@@ -29,19 +31,6 @@ function getVocabsForUser($username, $vocabId) {
 }
 
 /*
-function computeStudySessionsForVocabulary($vocabulary) {
-
-    $sessions = array();
-    for($i = 0; $i < 5; $i++) {
-      $current_date->add(new DateInterval(sprintf('P%dD', $i)));
-      var_dump($current_date);
-      $sessions[] = array($current_date);
-    }
-
-    return $sessions;
-}
-*/
-
 function generateStudyCalendarForUser($username, $vocabId) {
     $vocabs = getVocabsForUser($username, $vocabId);
 
@@ -49,7 +38,6 @@ function generateStudyCalendarForUser($username, $vocabId) {
 
     // Pour chaque vocabulaire...
     foreach($vocabs as $v) {
-
       $current_date = new DateTime($v['creation_date']);
 
       for($i = 0; $i < 20; $i++) {
@@ -61,6 +49,53 @@ function generateStudyCalendarForUser($username, $vocabId) {
 
     ksort($calendar);
     return $calendar;
+}
+*/
+
+function generateStudyCalendarForUser($username, $vocabId) {
+  $vocabs = getVocabsForUser($username, $vocabId);
+
+  $calendar = array();
+
+  $lowerLimit = new DateTime(date('Y-m-d'));
+
+  $upperLimit = new DateTime(date('Y-m-d'));
+  $upperLimit->add(new DateInterval(sprintf('P%dD', 365)));
+
+  foreach($vocabs as $v) {
+
+    $retentionThreshold = $v['param_retention_threshold'];
+    $alpha = $v['param_alpha'];
+    $current_date = new DateTime($v['creation_date']);
+
+    $sessionsCount = 1;
+    while($current_date < $upperLimit) {
+
+      if($current_date >= $lowerLimit && $current_date <= $upperLimit) {
+        $date = $current_date->format('Y-m-d');
+        $calendar[$date][] = $v;
+      } 
+
+      $isi = computeInterStudyInterval($sessionsCount, $retentionThreshold, $alpha);
+      $isi = max(round($isi), 1);
+      
+      $current_date->add(new DateInterval(sprintf('P%dD', $isi)));
+               
+      $sessionsCount++;      
+    }
+  }
+
+  ksort($calendar);
+  return $calendar;
+}
+
+/**
+ * Computes the ISI between session number n and n+1, with retention threshold Rt and parameter alpha.
+ */
+function computeISI($n, $Rt, $a) {
+  $rawISI = pow(10, ($n * $a * (1 - $Rt)) / ($Rt * $Rt)) - 1;
+  $adjustedISI = max(1, round($rawISI));
+  return $adjustedISI;
 }
 
 ?>
