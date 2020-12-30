@@ -90,11 +90,12 @@ function generateStudyCalendarForUser($username, $vocabId) {
 }
 
 /**
- * Computes the ISI between session number n and n+1, with retention threshold Rt and parameter alpha.
+ * Computes the ISI separating session number n and n+1, depending on the retention threshold Rt and the alpha parameter.
  */
 function computeISI($n, $Rt, $a) {
-  $rawISI = pow(10, ($n * $a * (1 - $Rt)) / ($Rt * $Rt)) - 1;
-  $adjustedISI = max(1, round($rawISI));
+  $rawISI = pow(10, ($n * $a * (1 - $Rt)) / ($Rt * $Rt)) - 1; // Computing exact ISI value
+  $roundedISI = round($rawISI); // Rounding to the nearest integer
+  $adjustedISI = max(1, $roundedISI); // Limiting the ISI to 1, in case the result of the rounding is 0
   return $adjustedISI;
 }
 
