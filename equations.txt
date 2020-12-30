@@ -9,3 +9,10 @@ Fit : s = \frac{\log_{10}{(2 + 1)}\cdot 0.239}{1-0.239} = 0.149845 \approx 0.15
 Dt en fonction de la rétention : \Delta t = 10^{\big(\frac{n\cdot\alpha(1-R_t)}{{R_t}^2}\big)}-1
 
 Force de rétention en fonction du nombre de révisions et du seuil Rt: s = \frac{n \cdot \alpha}{R_t}
+
+Conditions pour l'équation de l'ISI : 
+n \in \mathbb{N}
+\;\;\text{et}\;\;
+\alpha \in \mathbb{R^+}
+\;\;\text{et}\;\;
+R_t \in ]0,1] \subset \mathbb{R}
