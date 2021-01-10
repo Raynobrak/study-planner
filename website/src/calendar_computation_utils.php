@@ -76,7 +76,7 @@ function generateStudyCalendarForUser($username, $vocabId) {
         $calendar[$date][] = $v;
       } 
 
-      $isi = computeInterStudyInterval($sessionsCount, $retentionThreshold, $alpha);
+      $isi = computeISI($sessionsCount, $retentionThreshold, $alpha);
       $isi = max(round($isi), 1);
       
       $current_date->add(new DateInterval(sprintf('P%dD', $isi)));
